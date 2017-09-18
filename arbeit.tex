@@ -1,0 +1,94 @@
+\documentclass[12pt]{document}
+
+\usepackage[ngerman]{babel}% change this for your language
+
+%thanks david
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+%load any additional packages
+\usepackage{amssymb}
+% Korrektes Kodieren des in und outputs
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}    % UTF-8
+\usepackage{url}
+
+\usepackage{float}
+
+% better tables
+\usepackage{tabularx} % in the preamble
+
+% links across the toc
+\usepackage[linkcolor=black,colorlinks=true,citecolor=black,filecolor=black]{hyperref}
+
+\usepackage[sorting=none,backend=biber,style=numeric]{biblatex}
+% brauche et al. anstatt u. a.
+\DefineBibliographyStrings{german}{andothers={et al\adddot}}
+\addbibresource{refs.bib}
+
+%shorthand für tiefstellen
+\usepackage{subscript}
+
+\usepackage{mathtools}
+
+\usepackage{amsmath}
+
+%input macros (i.e. write your own macros file called mymacros.tex 
+%and uncomment the next line)
+%\include{mymacros}
+
+\title{Mein Super Maturaarbeit Titel}   %note \\[1ex] is a line break in the title
+
+\author{Mein Name}             %your name
+\college{MNG Rämibühl}  %your college
+
+\renewcommand{\submittedtext}{4. Januar 2016}
+\renewcommand{\supervisor}{Betreuende Lehrperson: David Sichau}
+\degree{Maturitätsarbeit}     %the degree
+\degreedate{}         %the degree date
+
+
+\usepackage{biblatex}
+
+
+\addbibresource{refs.bib}% In diesem File ist die Bibliographie gespeichert.
+
+
+
+%end the preamble and start the document
+\begin{document}
+
+
+\maketitle                  % create a title page from the preamble info
+\input{content/abstract}       % include the abstract
+
+
+\begin{romanpages}          % start roman page numbering
+\tableofcontents            % generate and include a table of contents
+\end{romanpages}            % end roman page numbering
+
+%now include the files of latex for each of the chapters etc
+\input{content/einleitung}
+\input{content/hauptteil}	
+\input{content/schlusswort}
+
+
+\newpage
+%now enable appendix numbering format and include any appendices
+\appendix
+
+
+\chapter{Literaturverzeichnis}
+\printbibliography[heading=none]     %use a bibtex bibliography file refs.bib
+
+\newpage
+\chapter{Abbildungsverzeichnis}
+\makeatletter
+\@starttoc{lof} % Print List of Figures
+\makeatother
+
+\newpage
+\input{content/bestatigung}
+ 
+
+\end{document}
